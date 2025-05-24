@@ -108,6 +108,7 @@ setup_gnome_apps() {
 
     # Gnome Decibels is not available from the ubuntu packages.  
     flatpak install org.gnome.Decibels -y
+    flatpak uninstall org.gtk.Gtk3theme.Yaru -y
 }
 
 setup_desktop() { 
@@ -270,12 +271,12 @@ auto() {
     install_icons
     msg 'Installing vanilla Gnome session'
     setup_vanilla_gnome
-    msg 'Setting up Gnome desktop'
-    setup_desktop
     msg 'Installing flatpak and flathub'
     setup_flathub
     msg 'Installing Gnome apps'
     setup_gnome_apps
+    msg 'Setting up Gnome desktop'
+    setup_desktop
     msg 'Cleaning up'
     cleanup
 }
