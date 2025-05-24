@@ -64,7 +64,7 @@ A fresh Ubuntu 25.04 desktop after running Gnomify Ubuntu, featuring the Papirus
     ```
 
 2. **Check the version number:**  
-   The script should display: **v 0.1.4**
+   The script should display: **v 0.1.5**
 
 3. **Reboot your computer** after the script completes.
 

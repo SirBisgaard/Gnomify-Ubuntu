@@ -51,7 +51,6 @@ update_system() {
 
 cleanup() {
     apt autoremove -y
-    flatpak uninstall org.gtk.Gtk3theme.Yaru -y
 }
 
 setup_flathub() {
@@ -221,7 +220,7 @@ print_banner() {
      ░░░░░░░░  ░░░░░░░░    ░░░░░░░░░░░░ ░░░░░   ░░░░░   ░░░░░░░░           
                                                                            
  Gnomify Ubuntu - A script to make Ubuntu look like Gnome
- By: @SirBisgaard | v 0.1.4         
+ By: @SirBisgaard | v 0.1.5         
     '                                                                                                       
 }
 
