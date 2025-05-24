@@ -5,12 +5,10 @@
 
 
 ## ✨ What is Gnomify Ubuntu?
----
 
 Gnomify Ubuntu is a script that transforms Ubuntu into a near-vanilla GNOME experience, replacing Ubuntu’s customizations and non-GNOME applications with the official GNOME interface and apps. This project is perfect for users who want the reliability of Ubuntu paired with the simplicity and elegance of upstream GNOME.
 
 ## 🎯 Who is this for?
----
 
 - **GNOME enthusiasts** who want a true GNOME experience on Ubuntu.
 - **Minimalists** seeking a clean, distraction-free desktop.
@@ -19,7 +17,6 @@ Gnomify Ubuntu is a script that transforms Ubuntu into a near-vanilla GNOME expe
 
 
 ## 🖼️ Screenshots
----
 
 ### Main Menu
 
@@ -42,7 +39,6 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 
 
 ## ⚡ Features
----
 
 - 🚫 **Removes Ubuntu Desktop** and related none GNOME apps.
 - 🚫 **Removes Snap** and all Snap packages
@@ -56,7 +52,6 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 
 
 ## 🛠️ Installation
----
 
 > **Recommended:** A fresh install of Ubuntu, and preferably with third-party repositories and additional media formats enabled during installation.
 
@@ -75,7 +70,6 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 
 
 ## 📋 What does the script do?
----
 
 - Updates your system
 - Removes Snap, Ubuntu session, telemetry, and bloat
@@ -90,7 +84,6 @@ For a detailed breakdown, [read the script](gnomify-ubuntu.sh) or run it interac
 
 
 ## ✅ Tested On
----
 
 This script has been tested on the latest Ubuntu releases to ensure compatibility and stability. 
 Below are the versions confirmed to work:
@@ -102,7 +95,6 @@ Below are the versions confirmed to work:
 
 
 ## 🙋 FAQ
----
 
 **Q: Can I customize what gets installed or removed?**  
 A: Yes! The script is modular—edit `gnomify-ubuntu.sh` to suit your needs.
@@ -114,24 +106,12 @@ A: No. The changes are significant. Back up your data before running.
 A: Only tested on standard Ubuntu. Use at your own risk on other flavors.
 
 
-
-## 📝 Notes
----
-
-### Ubuntu 24.04.2 LTS 
-- Gnome Showtime is not available in this version, so the script will not install it.
-- Gnome Software Deb plu
-
-
-
 ## 🤝 Credits
----
 
 - Created by [@SirBisgaard](https://github.com/SirBisgaard)
 - Thanks to the GNOME and Ubuntu communities
 
  **📄 [License](LICENSE)**
-
 
 
 Enjoy your clean GNOME desktop! 🎉
