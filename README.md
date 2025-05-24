@@ -38,7 +38,7 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 
 **Ubuntu 24.04.2 LTS Desktop**
 
-<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/master/screenshot_25_04.png" width="800" alt="Ubuntu 24.04.2 LTS Desktop Preview" />
+<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/master/screenshot_24_04.png" width="800" alt="Ubuntu 24.04.2 LTS Desktop Preview" />
 
 
 ## ⚡ Features
