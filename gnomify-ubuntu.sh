@@ -12,14 +12,14 @@ remove_ubuntu_default_apps() {
         ubuntu-advantage* \
         gnome-terminal \
         yaru-theme* \
-        rhythmbox* \
         apport* \
-        sysprof \
-        ptyxis \
-        eog \
-        evince -y
+        eog -y
     
-    # Removing random desktop shortcuts.
+    # Removing random apps & desktop shortcuts.
+    apt remove sysprof -y
+    apt remove ptyxis -y
+    apt remove rhythmbox* -y
+    apt remove evince -y
     rm /usr/share/applications/info.desktop
     rm /usr/share/applications/display-im7.q16.desktop
 }
