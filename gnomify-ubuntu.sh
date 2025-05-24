@@ -5,15 +5,9 @@ remove_ubuntu_default_apps() {
     apt remove \
         ubuntu-session \
         ubuntu-report \
-        ubuntu-gnome-wallpapers* \
-        ubuntu-pro-client* \
-        ubuntu-wallpapers* \
         ubuntu-advantage* \
         gnome-terminal \
-        yaru-theme-gnome-shell \
-        yaru-theme-gtk \
-        yaru-theme-icon \
-        yaru-theme-sound \
+        yaru-theme* \
         rhythmbox* \
         apport* \
         eog \
@@ -56,8 +50,8 @@ update_system() {
 }
 
 cleanup() {
-    flatpak uninstall org.gtk.Gtk3theme.Yaru -y
     apt autoremove -y
+    flatpak uninstall org.gtk.Gtk3theme.Yaru -y
 }
 
 setup_flathub() {
@@ -84,7 +78,7 @@ setup_vanilla_gnome() {
 setup_gnome_apps() {
     # install gnome core applications that are listed here: https://apps.gnome.org/
 
-    apt install \
+    apt install --no-install-recommends \
         gnome-calculator \
         gnome-calendar \
         gnome-snapshot \
