@@ -24,13 +24,13 @@ Gnomify Ubuntu is a script that transforms Ubuntu into a near-vanilla GNOME expe
 
 ### Main Menu
 
-<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/main/menu.png" width="800" alt="Gnomify Ubuntu Menu" />
+<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/master/menu.png" width="800" alt="Gnomify Ubuntu Menu" />
 
 ### Desktop Preview
 
 A fresh Ubuntu 25.04 desktop after running Gnomify Ubuntu, featuring the Papirus icon theme and default GNOME wallpaper:
 
-<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/main/screenshot.png" width="800" alt="Gnomify Ubuntu Desktop Preview" />
+<img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/master/screenshot.png" width="800" alt="Gnomify Ubuntu Desktop Preview" />
 
 ---
 
@@ -59,7 +59,7 @@ A fresh Ubuntu 25.04 desktop after running Gnomify Ubuntu, featuring the Papirus
 
 1. **Open a terminal** and run:
     ```bash
-    sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/main/gnomify-ubuntu.sh)"
+    sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/master/gnomify-ubuntu.sh)"
     ```
 
 2. **Check the version number:**  
