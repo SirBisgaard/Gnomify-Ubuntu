@@ -277,11 +277,11 @@ auto() {
     install_icons
     msg 'Installing vanilla Gnome session'
     setup_vanilla_gnome
-    msg 'Installing flatpak and flathub'
-    setup_flathub
     msg 'Setting up Gnome desktop'
     setup_desktop
-    msg 'Installing Gnome apps from flathub'
+    msg 'Installing flatpak and flathub'
+    setup_flathub
+    msg 'Installing Gnome apps'
     setup_gnome_apps
     msg 'Cleaning up'
     cleanup
