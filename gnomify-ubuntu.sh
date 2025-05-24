@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+update_system() {
+    apt update & apt upgrade --auto-remove -y
+}
+
 remove_ubuntu_default_apps() {
     ubuntu-report send no
     apt remove \
@@ -10,12 +14,19 @@ remove_ubuntu_default_apps() {
         yaru-theme* \
         rhythmbox* \
         apport* \
+        sysprof \
+        ptyxis \
         eog \
         evince -y
     
     # Removing random desktop shortcuts.
     rm /usr/share/applications/info.desktop
     rm /usr/share/applications/display-im7.q16.desktop
+}
+
+remove_terminal_ads() {
+    sed -i 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
+    pro config set apt_news=false
 }
 
 remove_snaps() {
@@ -40,24 +51,28 @@ remove_snaps() {
 	EOF
 }
 
-remove_terminal_ads() {
-    sed -i 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
-    pro config set apt_news=false
+setup_firefox() {
+    # Install firefrox from their own repository
+    apt purge firefox -y
+    snap remove --purge firefox
+    wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- > /etc/apt/keyrings/packages.mozilla.org.asc
+    echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" > /etc/apt/sources.list.d/mozilla.list 
+    echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' > /etc/apt/preferences.d/mozilla
+    apt update
+    apt install firefox -y
 }
 
-update_system() {
-    apt update & apt upgrade --auto-remove -y
-}
-
-cleanup() {
-    apt autoremove -y
-}
-
-setup_flathub() {
-    # Install flatpak and setup the flathub repo
-    apt install flatpak -y
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    apt install --no-install-recommends gnome-software-plugin-flatpak -y
+setup_icons() {
+    # Source: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+    add-apt-repository -y ppa:papirus/papirus
+    apt-get update
+    apt-get install \
+        papirus-icon-theme \
+        adwaita-icon-theme -y 
 }
 
 setup_vanilla_gnome() {
@@ -72,6 +87,13 @@ setup_vanilla_gnome() {
         gnome-keyring-pkcs11 \
         vanilla-gnome-default-settings \
         fonts-inter -y
+}
+
+setup_flathub() {
+    # Install flatpak and setup the flathub repo
+    apt install flatpak -y
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    apt install --no-install-recommends gnome-software-plugin-flatpak -y
 }
 
 setup_gnome_apps() {
@@ -128,29 +150,11 @@ setup_desktop() {
     gnome_extensions_wrapper disable tiling-assistant@ubuntu.com
 }
 
-install_icons() {
-    # Source: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
-    add-apt-repository -y ppa:papirus/papirus
-    apt-get update
-    apt-get install \
-        papirus-icon-theme \
-        adwaita-icon-theme -y 
+cleanup() {
+    apt autoremove -y
 }
 
-install_firefox() {
-    # Install firefrox from their own repository
-    apt purge firefox -y
-    snap remove --purge firefox
-    wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- > /etc/apt/keyrings/packages.mozilla.org.asc
-    echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" > /etc/apt/sources.list.d/mozilla.list 
-    echo '
-Package: *
-Pin: origin packages.mozilla.org
-Pin-Priority: 1000
-' > /etc/apt/preferences.d/mozilla
-    apt update
-    apt install firefox -y
-}
+# Wrapper functions to run gsettings and gnome-extensions as the logged in user
 
 gsettings_wrapper() {
     if ! command -v dbus-launch; then
@@ -265,9 +269,9 @@ auto() {
     msg 'Removing snap & snap apps'
     remove_snaps
     msg 'Installing Firefox from mozilla repository'
-    install_firefox
+    setup_firefox
     msg 'Installing vanilla icons and Papirus icons'
-    install_icons
+    setup_icons
     msg 'Installing vanilla Gnome session'
     setup_vanilla_gnome
     msg 'Installing flatpak and flathub'
