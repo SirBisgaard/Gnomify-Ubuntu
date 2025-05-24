@@ -10,6 +10,7 @@ remove_ubuntu_default_apps() {
         ubuntu-session \
         ubuntu-report \
         ubuntu-advantage* \
+        ubuntu-pro* \
         gnome-terminal \
         yaru-theme* \
         apport* \
@@ -77,15 +78,18 @@ setup_icons() {
 
 setup_vanilla_gnome() {
     apt install qgnomeplatform-qt5 -y
+    apt install qgnomeplatform-qt6 -y
     
     # Install gnome session, icons and fonts
     apt install \
         gdm3 \
         gnome-session \
+        gnome-package-updater \
         gnome-backgrounds \
         gnome-keyring \
         gnome-keyring-pkcs11 \
         vanilla-gnome-default-settings \
+        fonts-cantarell \
         fonts-inter -y
 }
 
@@ -148,6 +152,7 @@ setup_desktop() {
     gsettings_wrapper set org.gnome.desktop.interface gtk-theme Adwaita-dark
     gsettings_wrapper set org.gnome.desktop.interface color-scheme prefer-dark
     gsettings_wrapper set org.gnome.desktop.interface icon-theme Papirus
+    gsettings_wrapper set org.gnome.desktop.interface accent-color "blue"
 
     gsettings_wrapper set org.gnome.desktop.interface font-name 'Inter Variable 11'
     gsettings_wrapper set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/gnome/blobs-l.svg'
