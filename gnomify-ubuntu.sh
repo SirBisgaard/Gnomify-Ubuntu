@@ -4,8 +4,6 @@ remove_ubuntu_default_apps() {
     ubuntu-report send no
     apt remove \
         ubuntu-session \
-        ubuntu-docs \
-        ubuntu-settings \
         ubuntu-report \
         ubuntu-gnome-wallpapers* \
         ubuntu-pro-client* \
@@ -17,8 +15,7 @@ remove_ubuntu_default_apps() {
         yaru-theme-icon \
         yaru-theme-sound \
         rhythmbox* \
-        apport \
-        apport-gtk \
+        apport* \
         eog \
         evince -y
     
@@ -59,6 +56,7 @@ update_system() {
 }
 
 cleanup() {
+    flatpak uninstall org.gtk.Gtk3theme.Yaru -y
     apt autoremove -y
 }
 
@@ -111,6 +109,7 @@ setup_gnome_apps() {
         gnome-weather \
         gnome-tweaks \
         gnome-sushi \
+        gnome-software-plugin-deb \
         gnome-shell-extension-manager -y
 
     # Gnome Decibels is not available from the ubuntu packages.  
