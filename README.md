@@ -68,21 +68,6 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 > **⚠️ Use this script at your own risk.**  
 > It makes significant changes to your system.
 
-
-## 📋 What does the script do?
-
-- Updates your system
-- Removes Snap, Ubuntu session, telemetry, and bloat
-- Installs GNOME session, core apps, and tweaks
-- Sets up Flatpak and Flathub
-- Installs Papirus and Adwaita icon themes
-- Installs Firefox from Mozilla’s repo
-- Applies dark mode and modern GNOME theming
-- Cleans up and prompts for reboot
-
-For a detailed breakdown, [read the script](gnomify-ubuntu.sh) or run it interactively to see each step.
-
-
 ## ✅ Tested On
 
 This script has been tested on the latest Ubuntu releases to ensure compatibility and stability. 
@@ -109,7 +94,8 @@ A: Only tested on standard Ubuntu. Use at your own risk on other flavors.
 ## 🤝 Credits
 
 - Created by [@SirBisgaard](https://github.com/SirBisgaard)
-- Thanks to the GNOME and Ubuntu communities
+- Inspired by [@polkaulfield](https://github.com/polkaulfield) / [ubuntu-debullshit](https://github.com/polkaulfield/ubuntu-debullshit)
+- Thanks to [GNOME](https://www.gnome.org/) and [Ubuntu](https://ubuntu.com/) for their amazing work!
 
  **📄 [License](LICENSE)**
 
