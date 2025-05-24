@@ -98,37 +98,46 @@ setup_flathub() {
 
 setup_gnome_apps() {
     # install gnome core applications that are listed here: https://apps.gnome.org/
+    
+    # Map: apt package name -> flatpak ID
+    declare -A GNOME_APPS=(
+        [gnome-decibels]=org.gnome.Decibels
+        [gnome-calculator]=org.gnome.Calculator
+        [gnome-calendar]=org.gnome.Calendar
+        [gnome-snapshot]=org.gnome.Snapshot
+        [gnome-characters]=org.gnome.Characters
+        [gnome-clocks]=org.gnome.Clocks
+        [gnome-connections]=org.gnome.Connections
+        [gnome-console]=
+        [gnome-contacts]=org.gnome.Contacts
+        [baobab]=org.gnome.baobab
+        [gnome-disk-utility]=
+        [simple-scan]=org.gnome.SimpleScan
+        [evince]=org.gnome.Evince
+        [gnome-shell-extensions]=org.gnome.Extensions
+        [gnome-font-viewer]=org.gnome.font-viewer
+        [loupe]=org.gnome.Loupe
+        [gnome-logs]=org.gnome.Logs
+        [gnome-maps]=org.gnome.Maps
+        [gnome-music]=org.gnome.Music
+        [gnome-software]=
+        [gnome-text-editor]=org.gnome.TextEditor
+        [showtime]=org.gnome.Showtime
+        [gnome-weather]=org.gnome.Weather
+        [gnome-tweaks]=
+        [gnome-sushi]=
+        [gnome-software-plugin-deb]=
+        [gnome-shell-extension-manager]=com.mattjakeman.ExtensionManager
+    )
 
-    apt install --no-install-recommends \
-        gnome-calculator \
-        gnome-calendar \
-        gnome-snapshot \
-        gnome-characters \
-        gnome-clocks \
-        gnome-connections \
-        gnome-console \
-        gnome-contacts \
-        baobab \
-        gnome-disk-utility \
-        simple-scan \
-        evince \
-        gnome-shell-extensions \
-        gnome-font-viewer \
-        loupe \
-        gnome-logs \
-        gnome-maps \
-        gnome-music \
-        gnome-software \
-        gnome-text-editor \
-        showtime \
-        gnome-weather \
-        gnome-tweaks \
-        gnome-sushi \
-        gnome-software-plugin-deb \
-        gnome-shell-extension-manager -y
+    for pkg in "${!GNOME_APPS[@]}"; do
+        if apt info "$pkg" >/dev/null 2>&1; then
+            apt install --no-install-recommends "$pkg" -y
+        elif [[ -n "${GNOME_APPS[$pkg]}" ]]; then
+            flatpak install -y flathub "${GNOME_APPS[$pkg]}"
+        fi
+    done
 
-    # Gnome Decibels is not available from the ubuntu packages.  
-    flatpak install org.gnome.Decibels -y
     flatpak uninstall org.gtk.Gtk3theme.Yaru -y
 }
 
