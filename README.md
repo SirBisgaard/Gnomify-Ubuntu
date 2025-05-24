@@ -24,6 +24,8 @@ Gnomify Ubuntu is a script that transforms Ubuntu into a near-vanilla GNOME expe
 
 ### Main Menu
 
+This is how the script's main menu looks when you run it. You can choose to install Gnomify Ubuntu, or exit the script:
+
 <img src="https://raw.githubusercontent.com/SirBisgaard/Gnomify-Ubuntu/refs/heads/master/menu.png" width="800" alt="Gnomify Ubuntu Menu" />
 
 ### Desktop Preview
@@ -46,8 +48,7 @@ A fresh Ubuntu 25.04 desktop after running Gnomify Ubuntu, featuring the Papirus
 - 🌙 **Enables dark mode** and Adwaita/Libadwaita themes
 - 🔌 **Installs Extension Manager** for easy GNOME extension management
 - 🌐 **Installs Firefox** directly from Mozilla’s official repository
-- 📦 **Adds Julian FairFax package repo** for extra GNOME goodies
-- 🧩 **Disables Ubuntu-specific extensions but enables desktop icons**
+- 🧩 **Disables Ubuntu-specific extensions** but enables desktop icons
 - 🏪 **Enables Flathub** for access to thousands of Flatpak apps
 - 🧹 **Cleans up** after itself for a tidy system
 
@@ -113,7 +114,6 @@ A: Only tested on standard Ubuntu. Use at your own risk on other flavors.
 
 ## 🤝 Credits
 
-- Forked from [ubuntu-debullshit!](https://github.com/polkaulfield/ubuntu-debullshit)
 - Created by [@SirBisgaard](https://github.com/SirBisgaard)
 - Thanks to the GNOME and Ubuntu communities
 

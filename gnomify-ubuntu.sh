@@ -117,24 +117,11 @@ setup_gnome_apps() {
     flatpak install org.gnome.Decibels -y
 }
 
-setup_julianfairfax_repo() {
-    command -v curl || apt install curl -y
-    curl -s https://julianfairfax.gitlab.io/package-repo/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/julians-package-repo.gpg
-    echo 'deb [ signed-by=/usr/share/keyrings/julians-package-repo.gpg ] https://julianfairfax.gitlab.io/package-repo/debs packages main' | sudo tee /etc/apt/sources.list.d/julians-package-repo.list
-    apt update
-}
-
-install_adwgtk3() {    
-    apt install adw-gtk3 -y
-    flatpak install -y runtime/org.gtk.Gtk3theme.adw-gtk3-dark
-    flatpak install -y runtime/org.gtk.Gtk3theme.adw-gtk3
-}
-
 setup_desktop() { 
     gsettings_wrapper set org.gnome.shell.extensions.ding show-home false
     gsettings_wrapper set org.gnome.shell.extensions.ding show-trash false
     
-    gsettings_wrapper set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
+    gsettings_wrapper set org.gnome.desktop.interface gtk-theme Adwaita-dark
     gsettings_wrapper set org.gnome.desktop.interface color-scheme prefer-dark
     gsettings_wrapper set org.gnome.desktop.interface icon-theme Papirus
 
@@ -292,10 +279,6 @@ auto() {
     setup_vanilla_gnome
     msg 'Installing flatpak and flathub'
     setup_flathub
-    msg 'Adding julianfairfax repo'
-    setup_julianfairfax_repo
-    msg 'Install adw-gtk3'
-    install_adwgtk3
     msg 'Setting up Gnome desktop'
     setup_desktop
     msg 'Installing Gnome apps from flathub'
