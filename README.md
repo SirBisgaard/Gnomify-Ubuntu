@@ -40,7 +40,7 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 
 ## ⚡ Features
 
-- 🚫 **Removes Ubuntu Desktop** and related none GNOME apps.
+- 🚫 **Removes Ubuntu Desktop** and related none GNOME apps
 - 🚫 **Removes Snap** and all Snap packages
 - 🖥️ **Installs GNOME Desktop** (session, backgrounds, tweaks, etc.)
 - 🛠️ **Installs GNOME Core apps** (see script for full list)
@@ -48,6 +48,7 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 - 🏪 **Installs Flathub** for access to thousands of Flatpak apps
 - 🎨 **Enables Papirus icon theme** for a modern feel
 - 🌙 **Enables dark mode** and other defaults for a great start!
+- 📦 **Updates with Ubuntu** throught their updater  
 - 🧹 **Cleans up** after itself for a tidy system
 
 

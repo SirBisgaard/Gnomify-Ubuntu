@@ -9,8 +9,6 @@ remove_ubuntu_default_apps() {
     apt remove \
         ubuntu-session \
         ubuntu-report \
-        ubuntu-advantage* \
-        ubuntu-pro* \
         gnome-terminal \
         yaru-theme* \
         apport* \
@@ -84,7 +82,6 @@ setup_vanilla_gnome() {
     apt install \
         gdm3 \
         gnome-session \
-        gnome-package-updater \
         gnome-backgrounds \
         gnome-keyring \
         gnome-keyring-pkcs11 \
