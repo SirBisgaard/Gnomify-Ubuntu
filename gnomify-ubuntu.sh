@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+version="0.1.6"
 
 update_system() {
-    apt update & apt upgrade --auto-remove -y
+    apt update && apt upgrade --auto-remove -y
 }
 
 remove_ubuntu_default_apps() {
@@ -235,7 +236,7 @@ print_banner() {
      ░░░░░░░░  ░░░░░░░░    ░░░░░░░░░░░░ ░░░░░   ░░░░░   ░░░░░░░░           
                                                                            
  Gnomify Ubuntu - A script to make Ubuntu look like Gnome
- By: @SirBisgaard | v 0.1.5         
+ By: @SirBisgaard | ' $version '         
     '                                                                                                       
 }
 

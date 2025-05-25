@@ -62,7 +62,7 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
     ```
 
 2. **Check the version number:**  
-   The script should display: **v 0.1.5**
+   The script should display the version number listed in the script header.
 
 3. **Reboot your computer** after the script completes.
 
