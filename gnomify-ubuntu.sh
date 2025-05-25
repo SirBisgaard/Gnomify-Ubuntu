@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
-version="0.1.6"
+version="0.1.7"
 
 update_system() {
     apt update && apt upgrade --auto-remove -y
 }
 
-remove_ubuntu_default_apps() {
+remove_ubuntu_and_install_vanilla_gnome() {
     ubuntu-report send no
+
+    # Removing random apps
+    apt remove sysprof -y
+    apt remove ptyxis -y
+    apt remove rhythmbox* -y
+    apt remove evince -y
+
+    apt install qgnomeplatform-qt5 -y
+    apt install qgnomeplatform-qt6 -y
+
     apt remove \
         ubuntu-session \
         ubuntu-report \
@@ -14,12 +24,17 @@ remove_ubuntu_default_apps() {
         yaru-theme* \
         apport* \
         eog -y
+
+    apt install \
+        gnome-session \
+        gnome-backgrounds \
+        gnome-keyring \
+        gnome-keyring-pkcs11 \
+        vanilla-gnome-default-settings \
+        fonts-cantarell \
+        fonts-inter -y 
     
-    # Removing random apps & desktop shortcuts.
-    apt remove sysprof -y
-    apt remove ptyxis -y
-    apt remove rhythmbox* -y
-    apt remove evince -y
+    # Remove Ubuntu specific desktop files
     rm /usr/share/applications/info.desktop
     rm /usr/share/applications/display-im7.q16.desktop
 }
@@ -54,7 +69,6 @@ remove_snaps() {
 setup_firefox() {
     # Install firefrox from their own repository
     apt purge firefox -y
-    snap remove --purge firefox
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- > /etc/apt/keyrings/packages.mozilla.org.asc
     echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" > /etc/apt/sources.list.d/mozilla.list 
     echo '
@@ -69,26 +83,10 @@ Pin-Priority: 1000
 setup_icons() {
     # Source: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
     add-apt-repository -y ppa:papirus/papirus
-    apt-get update
-    apt-get install \
+    apt update
+    apt install \
         papirus-icon-theme \
         adwaita-icon-theme -y 
-}
-
-setup_vanilla_gnome() {
-    apt install qgnomeplatform-qt5 -y
-    apt install qgnomeplatform-qt6 -y
-    
-    # Install gnome session, icons and fonts
-    apt install \
-        gdm3 \
-        gnome-session \
-        gnome-backgrounds \
-        gnome-keyring \
-        gnome-keyring-pkcs11 \
-        vanilla-gnome-default-settings \
-        fonts-cantarell \
-        fonts-inter -y
 }
 
 setup_flathub() {
@@ -274,8 +272,8 @@ main() {
 auto() {
     msg 'Updating system'
     update_system
-    msg 'Removing Ubuntu default apps'
-    remove_ubuntu_default_apps
+    msg 'Removing Ubuntu and installing vanilla Gnome'
+    remove_ubuntu_and_install_vanilla_gnome
     msg 'Removing terminal ads (if they are enabled)'
     remove_terminal_ads
     msg 'Removing snap & snap apps'
@@ -284,8 +282,6 @@ auto() {
     setup_firefox
     msg 'Installing vanilla icons and Papirus icons'
     setup_icons
-    msg 'Installing vanilla Gnome session'
-    setup_vanilla_gnome
     msg 'Installing flatpak and flathub'
     setup_flathub
     msg 'Installing Gnome apps'
