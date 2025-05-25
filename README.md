@@ -64,7 +64,10 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 2. **Check the version number:**  
    The script should display the version number listed in the script header.
 
-3. **Reboot your computer** after the script completes.
+3. **Ubuntu crrash report:**  
+   If you see a message about Ubuntu crash reports, you can safely ignore it. This is a known issue with the script and does not affect functionality.
+
+4. **Reboot your computer** after the script completes.
 
 > **⚠️ Use this script at your own risk.**  
 > It makes significant changes to your system.

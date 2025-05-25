@@ -27,6 +27,7 @@ remove_ubuntu_and_install_vanilla_gnome() {
 
     apt install \
         gnome-session \
+        gnome-software \
         gnome-backgrounds \
         gnome-keyring \
         gnome-keyring-pkcs11 \
@@ -232,7 +233,6 @@ print_banner() {
     ░███   ░███ ░███ ░███ ░███ ░███ ░███ ░███  ░███ ███░███ ░███           
     ░░████████  ████████  ░░████████████ █████ ░░█████ ░░████████          
      ░░░░░░░░  ░░░░░░░░    ░░░░░░░░░░░░ ░░░░░   ░░░░░   ░░░░░░░░           
-                                                                           
  Gnomify Ubuntu - A script to make Ubuntu look like Gnome
  By: @SirBisgaard | ' $version '         
     '                                                                                                       
