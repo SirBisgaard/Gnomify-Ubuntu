@@ -94,6 +94,8 @@ A: No. The changes are significant. Back up your data before running.
 **Q: Does this work on Ubuntu flavors (Kubuntu, Xubuntu, etc.)?**  
 A: Only tested on standard Ubuntu. Use at your own risk on other flavors.
 
+**Q: Is adw-gtk3 updated automaticly?**  
+A: No, you will have to update it manually, an I hope to add this in the future.
 
 ## 🤝 Credits
 
