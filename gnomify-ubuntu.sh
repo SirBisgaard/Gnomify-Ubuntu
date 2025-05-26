@@ -181,6 +181,7 @@ cleanup() {
 # Wrapper functions to run gsettings and gnome-extensions as the logged in user
 
 get_latest_adw_gtk3_release() {
+    apt install curl -y
     curl --silent "https://api.github.com/repos/lassekongo83/adw-gtk3/releases/latest" |
         grep '"tag_name":' |
         sed -E 's/.*"([^"]+)".*/\1/'
