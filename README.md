@@ -46,7 +46,7 @@ Here are screenshots of the desktop after running Gnomify Ubuntu on different ve
 - 🛠️ **Installs GNOME Core apps** (see script for full list)
 - 🌐 **Installs Firefox** directly from Mozilla’s official repository
 - 🏪 **Installs Flathub** for access to thousands of Flatpak apps
-- 🎨 **Enables Papirus icon theme** for a modern feel
+- 🎨 **Enables Papirus & adw-gtk3 theme** for a modern feel
 - 🌙 **Enables dark mode** and other defaults for a great start!
 - 📦 **Updates with Ubuntu** throught their updater  
 - 🧹 **Cleans up** after itself for a tidy system
@@ -99,6 +99,7 @@ A: Only tested on standard Ubuntu. Use at your own risk on other flavors.
 
 - Created by [@SirBisgaard](https://github.com/SirBisgaard)
 - Inspired by [@polkaulfield](https://github.com/polkaulfield) / [ubuntu-debullshit](https://github.com/polkaulfield/ubuntu-debullshit)
+- Thanks to dev @ [adw-gtk3](https://github.com/lassekongo83/adw-gtk3) for the Adwaita GTK3 theme
 - Thanks to [GNOME](https://www.gnome.org/) and [Ubuntu](https://ubuntu.com/) for their amazing work!
 
  **📄 [License](LICENSE)**

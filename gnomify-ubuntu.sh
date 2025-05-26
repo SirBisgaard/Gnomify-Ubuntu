@@ -142,12 +142,26 @@ setup_gnome_apps() {
     flatpak uninstall org.gtk.Gtk3theme.Yaru -y
 }
 
+setup_adw_gtk3() {
+    # Install Adwaita GTK3 theme
+    flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+    
+    flatpak override --filesystem=xdg-data/themes
+    flatpak mask org.gtk.Gtk3theme.adw-gtk3
+    flatpak mask org.gtk.Gtk3theme.adw-gtk3-dark
+
+    awdVersion=$(get_latest_adw_gtk3_release)
+    wget -O /tmp/adw-gtk3.tar.xz https://github.com/lassekongo83/adw-gtk3/releases/download/"${awdVersion}"/adw-gtk3"${awdVersion}".tar.xz
+    tar -xf /tmp/adw-gtk3.tar.xz -C /usr/share/themes/
+}
+
 setup_desktop() { 
     gsettings_wrapper set org.gnome.shell.extensions.ding show-home false
     gsettings_wrapper set org.gnome.shell.extensions.ding show-trash false
     
-    gsettings_wrapper set org.gnome.desktop.interface gtk-theme Adwaita-dark
-    gsettings_wrapper set org.gnome.desktop.interface color-scheme prefer-dark
+    gsettings_wrapper set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' 
+    gsettings_wrapper set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
     gsettings_wrapper set org.gnome.desktop.interface icon-theme Papirus
     gsettings_wrapper set org.gnome.desktop.interface accent-color "blue"
 
@@ -166,6 +180,12 @@ cleanup() {
 }
 
 # Wrapper functions to run gsettings and gnome-extensions as the logged in user
+
+get_latest_adw_gtk3_release() {
+    curl --silent "https://api.github.com/repos/lassekongo83/adw-gtk3/releases/latest" |
+        grep '"tag_name":' |
+        sed -E 's/.*"([^"]+)".*/\1/'
+}
 
 gsettings_wrapper() {
     if ! command -v dbus-launch; then
@@ -286,6 +306,8 @@ auto() {
     setup_flathub
     msg 'Installing Gnome apps'
     setup_gnome_apps
+    msg 'Installing adw-gtk3 theme'
+    setup_adw_gtk3
     msg 'Setting up Gnome desktop'
     setup_desktop
     msg 'Cleaning up'
