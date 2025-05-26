@@ -150,7 +150,13 @@ setup_adw_gtk3() {
     flatpak mask org.gtk.Gtk3theme.adw-gtk3
     flatpak mask org.gtk.Gtk3theme.adw-gtk3-dark
 
-    wget -O /tmp/adw-gtk3.tar.xz https://github.com/lassekongo83/adw-gtk3/releases/download/$(get_latest_adw_gtk3_release)/adw-gtk3$(get_latest_adw_gtk3_release).tar.xz
+    
+    # Get latest release version directly here
+    apt install curl -y
+    local adw_version
+    adw_version=$(curl --silent "https://api.github.com/repos/lassekongo83/adw-gtk3/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+
+    wget -O /tmp/adw-gtk3.tar.xz "https://github.com/lassekongo83/adw-gtk3/releases/download/${adw_version}/adw-gtk3${adw_version}.tar.xz"
     tar -xf /tmp/adw-gtk3.tar.xz -C /usr/share/themes/
 }
 
@@ -179,13 +185,6 @@ cleanup() {
 }
 
 # Wrapper functions to run gsettings and gnome-extensions as the logged in user
-
-get_latest_adw_gtk3_release() {
-    apt install curl -y
-    curl --silent "https://api.github.com/repos/lassekongo83/adw-gtk3/releases/latest" |
-        grep '"tag_name":' |
-        sed -E 's/.*"([^"]+)".*/\1/'
-}
 
 gsettings_wrapper() {
     if ! command -v dbus-launch; then
