@@ -144,14 +144,13 @@ setup_gnome_apps() {
 
 setup_adw_gtk3() {
     # Install Adwaita GTK3 theme
-    flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+    flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
     
     flatpak override --filesystem=xdg-data/themes
     flatpak mask org.gtk.Gtk3theme.adw-gtk3
     flatpak mask org.gtk.Gtk3theme.adw-gtk3-dark
 
-    awdVersion=$(get_latest_adw_gtk3_release)
-    wget -O /tmp/adw-gtk3.tar.xz https://github.com/lassekongo83/adw-gtk3/releases/download/"${awdVersion}"/adw-gtk3"${awdVersion}".tar.xz
+    wget -O /tmp/adw-gtk3.tar.xz https://github.com/lassekongo83/adw-gtk3/releases/download/$(get_latest_adw_gtk3_release)/adw-gtk3$(get_latest_adw_gtk3_release).tar.xz
     tar -xf /tmp/adw-gtk3.tar.xz -C /usr/share/themes/
 }
 
