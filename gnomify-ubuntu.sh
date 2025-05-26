@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-version="0.1.7"
+version="0.2.0"
 
 update_system() {
     apt update && apt upgrade --auto-remove -y
