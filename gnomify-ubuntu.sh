@@ -114,7 +114,7 @@ setup_gnome_apps() {
         [baobab]=org.gnome.baobab
         [gnome-disk-utility]=
         [simple-scan]=org.gnome.SimpleScan
-        [evince]=org.gnome.Evince
+        [Papers]=org.gnome.Papers
         [gnome-shell-extensions]=org.gnome.Extensions
         [gnome-font-viewer]=org.gnome.font-viewer
         [loupe]=org.gnome.Loupe
